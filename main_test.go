@@ -37,3 +37,15 @@ func Test89Print89(t *testing.T) {
 		t.Error("expected \n" + expectedDigital + " actual is " + digital)
 	}
 }
+
+func Test890Print890(t *testing.T) {
+
+	digital := toDigital(890)
+	expectedDigital := " _  _  _ \n" +
+		"|_||_|| |\n" +
+		"|_| _||_|"
+
+	if digital != expectedDigital {
+		t.Error("expected \n" + expectedDigital + " actual is " + digital)
+	}
+}

@@ -4,28 +4,24 @@ import (
 	"strconv"
 )
 
+var digitalTop = [10]string{" _ ", "   ", " _ ", " _ ", "   ", " _ ", " _ ", " _ ", " _ ", " _ "}
+var digitalMid = [10]string{"| |", "  |", " _|", " _|", "|_|", "|_ ", "|_ ", "  |", "|_|", "|_|"}
+var digitalBot = [10]string{"|_|", "  |", "|_ ", " _|", "  |", " _|", "|_|", "  |", "|_|", " _|"}
+
 func toDigital(number int) string {
 
-	digitalTop := [10]string{" _ ", "", "", "", "", "", "", "", " _ ", " _ "}
-	digitalMid := [10]string{"| |", "", "", "", "", "", "", "", "|_|", "|_|"}
-	digitalBot := [10]string{"|_|", "", "", "", "", "", "", "", "|_|", " _|"}
-
 	str := strconv.Itoa(number)
+
+	return retStr(str, digitalTop) + "\n" + retStr(str, digitalMid) + "\n" + retStr(str, digitalBot)
+}
+
+func retStr(str string, digital [10]string) string {
+
 	var ret string
 
 	for _, strN := range str {
 		numberFromStr, _ := strconv.Atoi(string(strN))
-		ret = ret + digitalTop[numberFromStr]
-	}
-	ret = ret + "\n"
-	for _, strN := range str {
-		numberFromStr, _ := strconv.Atoi(string(strN))
-		ret = ret + digitalMid[numberFromStr]
-	}
-	ret = ret + "\n"
-	for _, strN := range str {
-		numberFromStr, _ := strconv.Atoi(string(strN))
-		ret = ret + digitalBot[numberFromStr]
+		ret = ret + digital[numberFromStr]
 	}
 
 	return ret
